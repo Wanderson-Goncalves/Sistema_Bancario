@@ -1,4 +1,5 @@
-import Conta, Saque
+from Conta import Conta
+from Saque import Saque
 
 class ContaCorrente(Conta):
     def __init__(self,numero,cliente, limite=500, limite_saques=3):

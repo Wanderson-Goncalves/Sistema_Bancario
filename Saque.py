@@ -1,4 +1,6 @@
-import Transacao, Cliente, Conta
+from Transacao import Transacao
+from Cliente_modulo import Cliente
+from Conta import Conta
 
 
 class Saque(Transacao):
@@ -18,7 +20,7 @@ class Saque(Transacao):
             
     def sacar(clientes):
         cpf = input("Informe o CPF do cliente: ")
-        cliente  = Cliente.filtra_cliente(cpf, clientes)
+        cliente  = Cliente.filtrar_cliente(cpf, clientes)
         
         if not cliente:
             print("\n### Cliente não encontrado! ###")

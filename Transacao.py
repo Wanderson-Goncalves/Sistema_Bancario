@@ -1,13 +1,11 @@
-from abc import ABC, abstractclassmethod, abstractproperty
-
+from abc import ABC, abstractmethod
 
 class Transacao(ABC):
     @property
-    @abstractproperty  
+    @abstractmethod  
     def valor(self):
-        pass
-    
-    @abstractclassmethod
-    def Registrar(self, conta):
-        pass 
-    
+        pass  # Propriedade abstrata para obrigar subclasses a implementar
+
+    @abstractmethod
+    def registrar(self, conta):
+        pass  # Método abstrato para obrigar subclasses a implementar

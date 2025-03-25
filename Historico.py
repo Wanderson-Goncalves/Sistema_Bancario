@@ -1,5 +1,6 @@
 from datetime import datetime
-import Cliente, Conta
+from Cliente_modulo import Cliente
+
 
 class Historico:
     def __init__(self):
@@ -7,20 +8,22 @@ class Historico:
         
     @property
     def transacoes(self):
-        return self._trensacoes
+        return self._transacoes
     
     def adicionar_transacao(self, transacao):
         self._transacoes.append(
             {
                 "tipo": transacao.__class__.__name__,
                 "valor": transacao.valor,
-                "data": datetime.now().strftime("%d-%m-%Y %H:%M:%s")
+                "data": datetime.now().strftime("%d-%m-%Y %H:%M:%S")
             }
         )
         
-    def exebir_estrato():
+    @staticmethod
+    def exibir_extrato(cliente):
+        from Conta import Conta
         cpf = input("Informe o CPF do cliente: ")
-        cliente = Cliente.filtrar_cliente(cpf, clientes)
+        cliente = Cliente.filtrar_cliente(cpf, cliente)
         
         if not cliente:
             print("\n### Cliente não encontrado! ###")
@@ -39,8 +42,7 @@ class Historico:
         
         else:
             for transacao in transacoes:
-                extrato +=f"\n{transacao['tipo']}:\n\tR$
-                {transacao['valor']:.2f}"
+                extrato +=f"\n{transacao['tipo']}:\n\tR$ {transacao['valor']:.2f}"
         
         print(extrato)
         print(f"\nSaldo:\n\tR$ {conta.saldo:.2f}")

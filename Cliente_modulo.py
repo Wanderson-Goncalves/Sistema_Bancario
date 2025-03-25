@@ -1,4 +1,5 @@
-import Transacao, Pessoa_Fisica
+from Transacao import Transacao
+
 class Cliente:
     def __init__(self, endereco):
         self.enderco = endereco
@@ -8,15 +9,16 @@ class Cliente:
         clientes_filtrados = [cliente for cliente in clientes if cliente.cpf == cpf]
         return clientes_filtrados[0] if clientes_filtrados else None
     
-    def realizar_transacao(self, conta, tramsacao):
-        Transacao.registrar(conta)
+    def realizar_transacao(self, conta, transacao):
+        transacao.registrar(conta)
         
     def adicionar_conta(self,conta):
         self.contas.append(conta)
         
     def criar_cliente(clientes):
+        from Pessoa_Fisica import Pessoa_Fisica
         cpf = input("Informe o CPF (somente número): ")
-        cliente = filtrar_cliente(cpf, clientes)
+        cliente = Cliente.filtrar_cliente(cpf, clientes)
         
         if cliente:
             print("\n### Já existe cliente com esse CPF! ### ")

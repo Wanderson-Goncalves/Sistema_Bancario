@@ -1,6 +1,6 @@
-import Cliente
+from Cliente_modulo import Cliente
 
-class PessoaFisica(Cliente):
+class Pessoa_Fisica(Cliente):
     def __init__(self, nome, data_nascimento, cpf,endereco):
             super().__init__(endereco)
             self.nome = nome

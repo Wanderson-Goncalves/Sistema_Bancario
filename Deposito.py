@@ -1,4 +1,6 @@
-import Transacao, Cliente,Conta
+from Transacao import Transacao
+from Cliente_modulo import Cliente
+from Conta import Conta
             
 
 class Deposito(Transacao):
@@ -17,11 +19,11 @@ class Deposito(Transacao):
     
     
     def depositar(clientes):
-        cpf = input("Informe o CPF do cliente! @@@")
+        cpf = input("Informe o CPF do cliente! ")
         cliente = Cliente.filtrar_cliente(cpf, clientes)
     
         if not cliente:
-            print("\n@@@ Cliente não encontrado! @@@")
+            print("\n@@@ Cliente não encontrado! ")
             return
         valor = float(input("Informe o valor do depósito:"))
         transacao = Deposito(valor)

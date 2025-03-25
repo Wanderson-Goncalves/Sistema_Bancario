@@ -1,11 +1,14 @@
 import textwrap
-import Historico, Cliente,Conta_Corrente
+from Historico import Historico
+from Cliente_modulo import Cliente 
+
 
 class Conta:
     def __init__(self, numero, cliente):
         self._saldo = 0
         self._numero = numero
-        self._agencia = cliente
+        self._agencia = "1a2b"
+        self._cliente = cliente
         self._historico = Historico()
         
     @classmethod
@@ -67,6 +70,7 @@ class Conta:
         return cliente.contas[0]
     
     def criar_conta(numero_conta, clientes, contas):
+        from Conta_Corrente import ContaCorrente
         cpf = input("\nInforme o CPF do cliente: ")
         cliente = Cliente.filtrar_cliente(cpf, clientes)
         
@@ -74,7 +78,7 @@ class Conta:
             print("\n### Cliente não encontrado, fluxo de criação de conta encerrrado! ####")
             return
         
-        conta = Conta_Corrente.nova_conta(cliente, numero=numero_conta)
+        conta = ContaCorrente.nova_conta(cliente, numero=numero_conta)
         contas.append(conta)
         cliente.contas.append(conta)
         
@@ -85,4 +89,5 @@ class Conta:
         for conta in contas:
             print("=" *100)
             print(textwrap.dedent(str(conta)))
+
         
