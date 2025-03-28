@@ -1,6 +1,7 @@
 from Transacao import Transacao
 from Cliente_modulo import Cliente
 from Conta import Conta
+from log_transacao import log_transacao
 
 
 class Saque(Transacao):
@@ -17,7 +18,7 @@ class Saque(Transacao):
         if sucesso_transacao:
             conta.historico.adicionar_transacao(self)
             
-            
+    @log_transacao       
     def sacar(clientes):
         cpf = input("Informe o CPF do cliente: ")
         cliente  = Cliente.filtrar_cliente(cpf, clientes)

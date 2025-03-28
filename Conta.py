@@ -1,6 +1,7 @@
 import textwrap
 from Historico import Historico
-from Cliente_modulo import Cliente 
+from Cliente_modulo import Cliente
+from log_transacao import log_transacao
 
 
 class Conta:
@@ -35,6 +36,7 @@ class Conta:
     def historico(self):
         return self._historico
     
+    @log_transacao
     def sacar(self, valor):
         saldo = self.saldo
         excedeu_saldo = valor > saldo
@@ -51,6 +53,7 @@ class Conta:
         
         return False
     
+    @log_transacao
     def depositar(self, valor):
         if valor > 0:
          self._saldo += valor
@@ -69,6 +72,7 @@ class Conta:
     
         return cliente.contas[0]
     
+    @log_transacao
     def criar_conta(numero_conta, clientes, contas):
         from Conta_Corrente import ContaCorrente
         cpf = input("\nInforme o CPF do cliente: ")

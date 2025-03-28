@@ -1,4 +1,5 @@
 from Transacao import Transacao
+from log_transacao import log_transacao
 
 class Cliente:
     def __init__(self, endereco):
@@ -14,7 +15,8 @@ class Cliente:
         
     def adicionar_conta(self,conta):
         self.contas.append(conta)
-        
+    
+    @log_transacao   
     def criar_cliente(clientes):
         from Pessoa_Fisica import Pessoa_Fisica
         cpf = input("Informe o CPF (somente número): ")
