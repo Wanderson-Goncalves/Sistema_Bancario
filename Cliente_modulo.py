@@ -5,12 +5,15 @@ class Cliente:
     def __init__(self, endereco):
         self.enderco = endereco
         self.contas = []
+        self.indice_conta = 0
     
     def filtrar_cliente(cpf, clientes):
         clientes_filtrados = [cliente for cliente in clientes if cliente.cpf == cpf]
         return clientes_filtrados[0] if clientes_filtrados else None
     
     def realizar_transacao(self, conta, transacao):
+        if len(conta.historico.transacoes_do_dia()) >= 10:
+            print("\n#### Excedeu o números de transações no dia! ####")
         transacao.registrar(conta)
         
     def adicionar_conta(self,conta):
